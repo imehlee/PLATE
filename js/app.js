@@ -49,7 +49,7 @@ class App {
           var btn = document.querySelector(".modal-exit");
           btn.addEventListener("click", function(){
             document.body.addEventListener('mousedown', function(e) {
-                this.addEventListener("mousemove", moveHandler)
+                this.addEventListener("mousemove", moveHandler);
               
             });
             
@@ -57,12 +57,12 @@ class App {
                 this.removeEventListener('mousemove', moveHandler);
             });
 
-            document.body.addEventListener('touchstart', (e) => {
-                this.addEventListener("touchmove", moveHandler);
-              })
+            document.body.addEventListener('touchstart', function(e) {
+                this.addEventListener('touchmove', moveHandler);
+              });
               
-              document.body.addEventListener('touchend', function () {
-                this.removeEventListener("touchmove", moveHandler)
+              document.body.addEventListener('touchend', function(e) {
+                this.removeEventListener('touchmove', moveHandler);
               });
           });
 
