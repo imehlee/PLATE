@@ -145,13 +145,14 @@ setReverbImpulseResponse(
 );
 
 document.body.addEventListener('mousedown', function(e) {
-  this.addEventListener('mousemove', moveHandler);
   wetFadeOut();
+  this.addEventListener('mousemove', moveHandler);
 });
 
 document.body.addEventListener('mouseup', function (e) {
-  this.removeEventListener('mousemove', moveHandler);
   wetFadeIn();
+  this.removeEventListener('mousemove', moveHandler);
+  
 });
 
 function updatePanner(x, y) {
@@ -171,12 +172,12 @@ function updatePanner(x, y) {
 
 //Mobile Touch
 document.body.addEventListener('touchstart', function(e) {
-  addEventListener("touchmove", moveHandler);
   wetFadeOut();
+  addEventListener("touchmove", moveHandler);
 })
 
 
 document.body.addEventListener('touchend', function(e) {
-  this.removeEventListener('touchmove', moveHandler);
   wetFadeIn();
+  this.removeEventListener('touchmove', moveHandler);
 });
