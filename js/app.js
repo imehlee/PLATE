@@ -56,6 +56,14 @@ class App {
             document.body.addEventListener('mouseup', function(e) {
                 this.removeEventListener('mousemove', moveHandler);
             });
+
+            document.body.addEventListener('touchstart', (e) => {
+                this.addEventListener("touchmove", moveHandler);
+              })
+              
+              document.body.addEventListener('touchend', function () {
+                this.removeEventListener("touchmove", moveHandler)
+              });
           });
 
 
