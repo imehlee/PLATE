@@ -1,4 +1,5 @@
 import * as THREE from 'https://unpkg.com/three@0.158.0/build/three.module.js';
+
 // import vertexShader from './shader/vertex.js';
 // import fragmentShader from './shader/fragment.js';
 
@@ -43,6 +44,10 @@ class App {
             console.log(updateZ);
             this._rotateY = rotateY;
             this._updateZ = updateZ; 
+            gsap.to(this._camera.position, {
+                z: updateZ+0.5,
+                duration: 0.5
+            });
 
           }
          
@@ -153,7 +158,7 @@ class App {
     update(time) {
         time *= 0.001;
         this._points.rotation.y = this._rotateY;
-        this._camera.position.z = this._updateZ + 0.5;
+      //  this._camera.position.z = this._updateZ + 0.5;
     }
 
     render(time) {

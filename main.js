@@ -145,18 +145,9 @@ setReverbImpulseResponse(
 );
 
 document.body.addEventListener('mousedown', function(e) {
+  this.addEventListener('mousemove', moveHandler);
   wetFadeOut();
-  this.addEventListener("mousemove", moveHandler)
-  //touch = true;
 });
-
-// document.body.addEventListener('mousemove', function(e) {
-//   if(touch) {
-//     updatePanner(e.clientX, e.clientY);
-//     console.log("mousemove");
-
-//   }
-// });
 
 document.body.addEventListener('mouseup', function (e) {
   this.removeEventListener('mousemove', moveHandler);
@@ -179,13 +170,13 @@ function updatePanner(x, y) {
 }
 
 //Mobile Touch
-document.body.addEventListener('touchstart', (e) => {
-  wetFadeOut();
+document.body.addEventListener('touchstart', function(e) {
   addEventListener("touchmove", moveHandler);
+  wetFadeOut();
 })
 
 
-document.body.addEventListener('touchend', function () {
-  this.removeEventListener("touchmove", moveHandler)
+document.body.addEventListener('touchend', function(e) {
+  this.removeEventListener('touchmove', moveHandler);
   wetFadeIn();
 });
