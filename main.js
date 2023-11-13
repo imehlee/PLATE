@@ -29,12 +29,12 @@ const moveHandler = (e) => {
 
 const wetFadeIn = (e) => {
   wet2.gain.value = 0.01;
-  wet2.gain.linearRampToValueAtTime(1.2, ctx.currentTime + 2);
+  wet2.gain.linearRampToValueAtTime(1.2, ctx.currentTime + 0.5);
 }
 
 const wetFadeOut = (e) => {
-    wet2.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-    //wet2.gain.value = 0.01;
+    //wet2.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+    wet2.gain.value = 0.01;
 }
 
 
