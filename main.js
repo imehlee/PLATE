@@ -33,8 +33,8 @@ const wetFadeIn = (e) => {
 }
 
 const wetFadeOut = (e) => {
-    //wet2.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-    wet2.gain.value = 0.01;
+    wet2.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+    //wet2.gain.value = 0.01;
 }
 
 
