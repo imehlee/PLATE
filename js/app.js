@@ -97,7 +97,7 @@ class App {
         const material = new THREE.PointsMaterial({
             map: sprite,
             alphaTest: 0.5,
-            size: 0.05,
+            size: 0.02,
             sizeAttenuation: true
         });
 
