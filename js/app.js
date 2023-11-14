@@ -92,7 +92,7 @@ class App {
         );
 
         const sprite = new THREE.TextureLoader().load(
-            "../source/fog.png");
+            "../source/particles-single.png");
 
         const material = new THREE.PointsMaterial({
             map: sprite,
