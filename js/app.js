@@ -134,7 +134,7 @@ class App {
 
         this._scene.add(sphere);
         this._scene.add(system);
-        this._scene.add(planeMesh);
+       // this._scene.add(planeMesh);
     }
     
 
