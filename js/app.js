@@ -1,10 +1,5 @@
 import * as THREE from 'https://unpkg.com/three@0.158.0/build/three.module.js';
 
-// import vertexShader from './shader/vertex.js';
-// import fragmentShader from './shader/fragment.js';
-
-
-
 
 class App {
     constructor() {
@@ -23,10 +18,12 @@ class App {
         this._setupCamera();
         this._setupLight();
         this._setupModel();
+
+
         this._updateZ = 0;
         this._rotateY = 0; 
         this._lastZ = 0;
-
+       
         window.onresize = this.resize.bind(this);
         this.resize();
 
@@ -73,10 +70,24 @@ class App {
 
 
     }
+    
+    // _setupPostprocess() {
+    //     const renderPass = new RenderPass(this._scene, this._camera);
+    //     const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.1, 0.1, 0.1);
+    //     const composer = new EffectComposer(this._renderer);
+    //     composer.addPass(renderPass);
+    //     composer.addPass(bloomPass);
+
+    //     this._bloomPass = bloomPass;
+    //     this._composer = composer;
+    // }
 
 
     _setupModel() {
-          const vertices = [];
+
+        //particle만들기
+        const vertices = [];
+
         for (let i = 0; i < 10000; i++) {
             const x = THREE.MathUtils.randFloatSpread(5);
             const y = THREE.MathUtils.randFloatSpread(5);
@@ -85,8 +96,8 @@ class App {
             vertices.push(x, y, z);
         }
 
-        const geometry = new THREE.BufferGeometry();
-        geometry.setAttribute(
+        const particle = new THREE.BufferGeometry();
+        particle.setAttribute(
             "position",
             new THREE.Float32BufferAttribute(vertices, 3)
         );
@@ -97,9 +108,11 @@ class App {
         const material = new THREE.PointsMaterial({
             map: sprite,
             alphaTest: 0.5,
-            size: 0.02,
+            size: 0.05,
             sizeAttenuation: true
         });
+
+    
 
         //shpere만들기
         const geometry2 = new THREE.SphereGeometry(0.05);
@@ -123,14 +136,14 @@ class App {
         const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
 
-        const points = new THREE.Points(geometry, material);
-
+        const system = new THREE.Points(particle, material);
+        
         this._sphere = sphere;
-        this._points = points;
+        this._system = system;
         this._planeMesh = planeMesh;
 
         this._scene.add(sphere);
-        this._scene.add(points);
+        this._scene.add(system);
         this._scene.add(planeMesh);
     }
     
@@ -157,8 +170,10 @@ class App {
 
     update(time) {
         time *= 0.001;
-        this._points.rotation.y = this._rotateY;
-      //  this._camera.position.z = this._updateZ + 0.5;
+
+        this._system.rotation.y = this._rotateY;
+        this._camera.position.z = this._updateZ + 0.5;
+
     }
 
     render(time) {
@@ -167,13 +182,6 @@ class App {
         requestAnimationFrame(this.render.bind(this));
     }
 
-    // start() {
-    //     var btn = document.querySelector(".modal-exit");
-    //     btn.addEventListener("click", function(){
-            
-    //     });
-    //     if 
-    // }
 
     resize() {
         const width = this._divContainer.clientWidth;

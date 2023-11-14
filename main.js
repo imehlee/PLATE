@@ -28,13 +28,13 @@ const moveHandler = (e) => {
 }
 
 const wetFadeIn = (e) => {
-  wet2.gain.value = 0.01;
+ // wet2.gain.value = 0.01;
   wet2.gain.linearRampToValueAtTime(1.2, ctx.currentTime + 0.5);
   dry2.gain.linearRampToValueAtTime(0.4, ctx.currentTime + 1);
 }
 
 const wetFadeOut = (e) => {
-    //wet2.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+    //wet2.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.2);
     dry2.gain.linearRampToValueAtTime(1.0, ctx.currentTime + 1);
     wet2.gain.value = 0.01;
 }
@@ -133,9 +133,9 @@ function setReverbImpulseResponse(url) {
         reverb.buffer = buffer;
       },
 
-      function (buffer) {
-        console.log("Error decoding impulse response!");
-      }
+      // function (buffer) {
+      //   console.log("Error decoding impulse response!");
+      // }
     );
   };
 
