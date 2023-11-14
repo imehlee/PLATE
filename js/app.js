@@ -71,16 +71,6 @@ class App {
 
     }
     
-    // _setupPostprocess() {
-    //     const renderPass = new RenderPass(this._scene, this._camera);
-    //     const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.1, 0.1, 0.1);
-    //     const composer = new EffectComposer(this._renderer);
-    //     composer.addPass(renderPass);
-    //     composer.addPass(bloomPass);
-
-    //     this._bloomPass = bloomPass;
-    //     this._composer = composer;
-    // }
 
 
     _setupModel() {
@@ -108,7 +98,7 @@ class App {
         const material = new THREE.PointsMaterial({
             map: sprite,
             alphaTest: 0.5,
-            size: 0.05,
+            size: 0.03,
             sizeAttenuation: true
         });
 
