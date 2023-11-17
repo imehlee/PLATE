@@ -74,6 +74,24 @@ class App {
 
 
     _setupModel() {
+        const textureLoader = new THREE.TextureLoader();
+        const mapHeight = textureLoader.load("../source/stripes.png");
+
+        const material2 = new THREE.MeshStandardMaterial({
+            map: mapHeight,
+            displacementMap: mapHeight,
+            displacementScale: 0.2,
+            displacementBias: -0.1,
+            transparent: true,
+            opacity: 0.5,
+            blending: THREE.AdditiveBlending,
+        });
+
+        this._material2 = material2;
+        const plane = new THREE.Mesh(new THREE.PlaneGeometry(10 , 10, 100, 100), material2);
+        plane.position.set(0, 0, 1);
+        this._plane = plane;
+        this._scene.add(plane);
 
         //particle만들기
         const vertices = [];
@@ -159,11 +177,14 @@ class App {
     }
 
     update(time) {
-        time *= 0.001;
-
+        time *= 0.001;  
         this._system.rotation.y = this._rotateY;
-        this._camera.position.z = this._updateZ + 0.5;
+        this._material2.displacementScale = (time % 8)*0.1;
+        if (this._material2.displacementScale > 0.4) {
+            this._material2.displacementScale = 0.4 - (time % 4) * 0.1;
+        }
 
+        this._sphere.rotation.y += 0.01
     }
 
     render(time) {
