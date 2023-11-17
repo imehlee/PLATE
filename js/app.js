@@ -169,9 +169,9 @@ class App {
     update(time) {
         time *= 0.001;  
         this._system.rotation.y = this._rotateY;
-        this._material2.displacementScale = (time % 8)*0.1;
-        if (this._material2.displacementScale > 0.4) {
-            this._material2.displacementScale = 0.4 - (time % 4) * 0.1;
+        this._material2.displacementScale = (time % 10)*0.1;
+        if (this._material2.displacementScale > 0.5) {
+            this._material2.displacementScale = 0.5 - (time % 5) * 0.1;
         }
 
         this._sphere.rotation.y += 0.01
