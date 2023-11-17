@@ -83,7 +83,7 @@ class App {
             displacementScale: 0.2,
             displacementBias: -0.1,
             transparent: true,
-            opacity: 0.5,
+            opacity: 0.6,
             blending: THREE.AdditiveBlending,
         });
 
@@ -133,26 +133,16 @@ class App {
         //const sphere = new THREE.Mesh(geometry2, fillMaterial2);
        
 
-        //Plane만들기
-        const planeGeometry = new THREE.PlaneGeometry(3, 3, 100, 100);
-        const planeMaterial = new THREE.ShaderMaterial({
-            wireframe: true,
-            // vertexShader,
-            // fragmentShader,
-        });
-
-        const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
 
         const system = new THREE.Points(particle, material);
         
         this._sphere = sphere;
         this._system = system;
-        this._planeMesh = planeMesh;
 
         this._scene.add(sphere);
         this._scene.add(system);
-       // this._scene.add(planeMesh);
+       
     }
     
 
