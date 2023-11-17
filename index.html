@@ -99,6 +99,22 @@
              $('#myModal').hide();
         };
         
+        let idleTime = 0;
+    $(document).ready(function () {
+ 
+        let idleInterval = setInterval(timerIncrement, 30000); 
+        $(this).mousemove(function (e) { idleTime = 0; });
+        $(this).keypress(function (e) { idleTime = 0; });
+    });
+    
+    function timerIncrement() {
+        idleTime = idleTime + 1;
+        
+        if (idleTime > 1) { 
+            window.location.reload();
+        }
+    }
+
       </script>
       
  <script src="main.js"></script>
