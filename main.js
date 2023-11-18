@@ -28,8 +28,8 @@ const moveHandler = (e) => {
 }
 
 const wetFadeIn = (e) => {
-  wet2.gain.linearRampToValueAtTime(1.2, ctx.currentTime + 1);
-  dry2.gain.linearRampToValueAtTime(0.4, ctx.currentTime + 1);
+  wet2.gain.linearRampToValueAtTime(0.8, ctx.currentTime + 1);
+  dry2.gain.linearRampToValueAtTime(0.4, ctx.currentTime + 0.2);
 }
 
 const wetFadeOut = (e) => {
@@ -67,7 +67,7 @@ sound1.source = ctx.createBufferSource();
 sound1.volume = ctx.createGain();
 
 //ambience gain
-sound1.volume.gain.value = 0.1;
+sound1.volume.gain.value = 0.2;
 
 sound1.source.connect(sound1.volume);
 sound1.volume.connect(mainVolume);
