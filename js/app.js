@@ -174,7 +174,7 @@ class App {
             this._material2.displacementScale = 0.5 - (time % 5) * 0.1;
         }
 
-        this._sphere.rotation.y += 0.005;
+        this._sphere.rotation.y += 0.001;
     }
 
     render(time) {
