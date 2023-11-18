@@ -96,7 +96,7 @@ class App {
         //particle만들기
         const vertices = [];
 
-        for (let i = 0; i < 10000; i++) {
+        for (let i = 0; i < 8000; i++) {
             const x = THREE.MathUtils.randFloatSpread(5);
             const y = THREE.MathUtils.randFloatSpread(5);
             const z = THREE.MathUtils.randFloatSpread(5);
